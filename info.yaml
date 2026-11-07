@@ -1,0 +1,54 @@
+# Tiny Tapeout project information
+project:
+  title:        "TinyRV-E RV32E SoC"
+  author:       "NextBG"
+  discord:      ""
+  description:  "Multi-cycle RV32E CPU with XIP SPI flash, SPI PSRAM, UART, GPIO, 2x PWM and timer"
+  language:     "Verilog"
+  clock_hz:     50000000
+
+  # How many tiles your design occupies? A single tile is about 202x155 uM.
+  tiles: "3x2"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2, 8x2, 3x4, 4x4, 5x4, 6x4 or 8x4
+
+  top_module:  "tt_um_nextbg_rv32e_soc"
+
+  source_files:
+    - "tt_um_nextbg_rv32e_soc.v"
+    - "rv_core.v"
+    - "spi_mem.v"
+    - "periph.v"
+    - "uart.v"
+
+pinout:
+  # Inputs
+  ui[0]: "GPIO_IN0"
+  ui[1]: "GPIO_IN1"
+  ui[2]: "GPIO_IN2"
+  ui[3]: "UART_RX / GPIO_IN3"
+  ui[4]: "GPIO_IN4"
+  ui[5]: "GPIO_IN5"
+  ui[6]: "GPIO_IN6"
+  ui[7]: "GPIO_IN7"
+
+  # Outputs
+  uo[0]: "GPIO_OUT0"
+  uo[1]: "GPIO_OUT1"
+  uo[2]: "GPIO_OUT2"
+  uo[3]: "GPIO_OUT3"
+  uo[4]: "UART_TX"
+  uo[5]: "GPIO_OUT5"
+  uo[6]: "GPIO_OUT6 / PWM0"
+  uo[7]: "GPIO_OUT7 / PWM1"
+
+  # Bidirectional pins
+  uio[0]: "FLASH_CS_N"
+  uio[1]: "SPI_MOSI"
+  uio[2]: "SPI_MISO"
+  uio[3]: "SPI_SCK"
+  uio[4]: "SD2 (driven high, WP#)"
+  uio[5]: "SD3 (driven high, HOLD#)"
+  uio[6]: "RAM_A_CS_N"
+  uio[7]: "RAM_B_CS_N (unused, high)"
+
+# Do not change!
+yaml_version: 6
