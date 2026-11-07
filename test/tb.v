@@ -21,7 +21,16 @@ module tb ();
   wire [7:0] uio_oe;
   wire uart_tx = uo_out[4];
 
+`ifdef USE_POWER_PINS
+  wire VPWR = 1'b1;
+  wire VGND = 1'b0;
+`endif
+
   tt_um_nextbg_rv32e_soc user_project (
+`ifdef USE_POWER_PINS
+      .VPWR(VPWR),
+      .VGND(VGND),
+`endif
       .ui_in  (ui_in),
       .uo_out (uo_out),
       .uio_in (uio_in),
