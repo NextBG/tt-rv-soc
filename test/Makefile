@@ -20,8 +20,11 @@ else
 SIM_BUILD				= sim_build/gl
 COMPILE_ARGS    += -DGL_TEST
 COMPILE_ARGS    += -DFUNCTIONAL
+COMPILE_ARGS    += -DUSE_POWER_PINS
 COMPILE_ARGS    += -DSIM
-# Cell models for the PDK in $(PDK) (ihp-sg13cmos5l or ihp-sg13g2), e.g. sg13cmos5l_stdcell.v
+COMPILE_ARGS    += -DUNIT_DELAY=\#1
+VERILOG_SOURCES += $(PDK_ROOT)/sky130A/libs.ref/sky130_fd_sc_hd/verilog/primitives.v
+VERILOG_SOURCES += $(PDK_ROOT)/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v
 PDK ?= ihp-sg13cmos5l
 PDK_CELL_PREFIX = $(patsubst ihp-%,%,$(PDK))
 PDK_LIBS_REF = $(PDK_ROOT)/$(PDK)/libs.ref
