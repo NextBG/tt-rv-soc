@@ -31,6 +31,10 @@ TinyRV-E is a small RISC-V microcontroller that fits in a few Tiny Tapeout tiles
 
 During reset all `uio` pins are inputs, so the RP2040 on the demo board can program the flash while the design is held in reset.
 
+### Timing
+
+Signed off at 22 ns (45 MHz) in the slow corner (1.08 V, 125 °C); the typical corner has ~7 ns of slack at 20 ns, so 50 MHz is the intended operating clock at room temperature.
+
 ### Limitations
 
 Every memory access is a complete SPI transaction (~70-100 clocks for random accesses), so the CPU runs at a few hundred thousand instructions per second at 50 MHz. At very low clock frequencies a PSRAM transaction can exceed the PSRAM maximum CS-low time (tCEM, 8 us); use at least ~25 MHz when using the PSRAM.
